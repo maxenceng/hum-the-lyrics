@@ -7,7 +7,7 @@ import { LyricsModule } from './lyrics/lyrics.module'
 @Module({
   imports: [
     LyricsModule,
-    MongooseModule.forRoot('mongodb://root:root@localhost/hum', { useNewUrlParser: true }),
+    MongooseModule.forRoot('mongodb://localhost/hum', { useNewUrlParser: true }),
     ],
   controllers: [AppController],
   providers: [AppService],
