@@ -17,13 +17,16 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "script:genius": "node src/scripts/genius.js"
   },
   "dependencies": {
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/mongoose": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
+    "dot-env": "^0.0.1",
+    "lyricist": "^2.2.2",
     "mongoose": "^5.4.20",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
