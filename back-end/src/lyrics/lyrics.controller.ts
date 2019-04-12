@@ -9,26 +9,31 @@ export class LyricsController {
 
   @Get()
   async getLyrics(): Promise<Lyrics[]> {
-    return await this.lyricsService.getLyrics()
+    return await this.lyricsService.getAllLyrics()
   }
 
-  @Get(':lyricID')
-  async getLyric(@Param('lyricID') lyricID: number): Promise<Lyrics> {
-    return await this.lyricsService.getLyric(lyricID)
+  @Get(':lyricsID')
+  async getLyric(@Param('lyricsID') lyricsID: string): Promise<Lyrics> {
+    return await this.lyricsService.getLyrics(lyricsID)
+  }
+
+  @Get(':lyricsText')
+  async getLyricsByText(@Param('lyricsText') lyricsText: string): Promise<Lyrics> {
+    return await this.lyricsService.getLyricsByText(lyricsText)
   }
 
   @Post()
   async addLyric(@Body() createLyricsDto: CreateLyricsDto): Promise<Lyrics>  {
-    return await this.lyricsService.addLyric(createLyricsDto)
+    return await this.lyricsService.addLyrics(createLyricsDto)
   }
 
-  @Put(':lyricID')
-  async updateLyric(@Param('lyricID') lyricID: number, @Body() createLyricsDto: CreateLyricsDto): Promise<Lyrics> {
-    return await this.lyricsService.updateLyric(lyricID, createLyricsDto)
+  @Put(':lyricsID')
+  async updateLyric(@Param('lyricsID') lyricsID: string, @Body() createLyricsDto: CreateLyricsDto): Promise<Lyrics> {
+    return await this.lyricsService.updateLyrics(lyricsID, createLyricsDto)
   }
 
   @Delete()
   async deleteLyric(@Query() query): Promise<Lyrics> {
-    return await this.lyricsService.deleteLyrics(query.lyricID)
+    return await this.lyricsService.deleteLyrics(query.lyricsID)
   }
 }

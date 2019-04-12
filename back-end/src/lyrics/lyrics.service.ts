@@ -8,23 +8,27 @@ import { CreateLyricsDto } from './dto/create-lyrics.dto'
 export class LyricsService {
   constructor(@InjectModel('Lyrics') private readonly lyrics: Model<Lyrics>) {}
 
-  async getLyrics(): Promise<Lyrics[]> {
+  async getAllLyrics(): Promise<Lyrics[]> {
     return await this.lyrics.find().exec()
   }
 
-  async getLyric(lyricID: number): Promise<Lyrics> {
-    return await this.lyrics.findById(lyricID).exec()
+  async getLyrics(lyricsID: string): Promise<Lyrics> {
+    return await this.lyrics.findById(lyricsID).exec()
   }
 
-  async addLyric(createLyricsDto: CreateLyricsDto): Promise<Lyrics> {
+  async addLyrics(createLyricsDto: CreateLyricsDto): Promise<Lyrics> {
     return await this.lyrics(createLyricsDto).save()
   }
 
-  async updateLyric(lyricID: number, createLyricsDto: CreateLyricsDto): Promise<Lyrics> {
-    return await this.lyrics.findByIdAndUpdate(lyricID, createLyricsDto, { new: true })
+  async updateLyrics(lyricsID: string, createLyricsDto: CreateLyricsDto): Promise<Lyrics> {
+    return await this.lyrics.findByIdAndUpdate(lyricsID, createLyricsDto, { new: true })
   }
 
-  async deleteLyrics(lyricID): Promise<Lyrics> {
-    return await this.lyrics.findByIdAndRemove(lyricID)
+  async deleteLyrics(lyricsID: string): Promise<Lyrics> {
+    return await this.lyrics.findByIdAndRemove(lyricsID)
+  }
+
+  async getLyricsByText(lyricsText: string): Promise<Lyrics> {
+    return await this.lyrics.find({ lyrics: { $regex: lyricsText, $options: 'i' }})
   }
 }

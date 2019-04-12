@@ -1,5 +1,5 @@
 export interface Lyrics {
+  readonly artist: string
   readonly title: string
-  readonly description: string
-  readonly author: string
+  readonly lyrics: string
 }
