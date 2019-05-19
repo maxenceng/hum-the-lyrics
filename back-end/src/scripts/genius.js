@@ -1,4 +1,4 @@
-require('dot-env')
+require('dotenv').config()
 const Lyricist = require('lyricist')
 const mongoose = require('mongoose')
 

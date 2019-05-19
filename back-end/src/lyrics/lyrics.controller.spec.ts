@@ -10,7 +10,7 @@ describe('Lyrics Controller', () => {
     }).compile()
 
     controller = module.get<LyricsController>(LyricsController)
-  });
+  })
 
   it('should be defined', () => {
     expect(controller).toBeDefined()

@@ -12,13 +12,8 @@ export class LyricsController {
     return await this.lyricsService.getAllLyrics()
   }
 
-  @Get(':lyricsID')
-  async getLyric(@Param('lyricsID') lyricsID: string): Promise<Lyrics> {
-    return await this.lyricsService.getLyrics(lyricsID)
-  }
-
-  @Get(':lyricsText')
-  async getLyricsByText(@Param('lyricsText') lyricsText: string): Promise<Lyrics> {
+  @Get('/:lyricsText')
+  async getLyricsByText(@Param('lyricsText') lyricsText: string): Promise<Lyrics[]> {
     return await this.lyricsService.getLyricsByText(lyricsText)
   }
 

@@ -4,10 +4,12 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { LyricsModule } from './lyrics/lyrics.module'
 
+const isDocker = process.env.DOCKER
+
 @Module({
   imports: [
     LyricsModule,
-    MongooseModule.forRoot('mongodb://localhost/hum', { useNewUrlParser: true }),
+    MongooseModule.forRoot(`mongodb://${isDocker ? 'mongo' : 'localhost'}/hum`, { useNewUrlParser: true }),
     ],
   controllers: [AppController],
   providers: [AppService],

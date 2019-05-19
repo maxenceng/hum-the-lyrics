@@ -17,7 +17,8 @@ export class LyricsService {
   }
 
   async addLyrics(createLyricsDto: CreateLyricsDto): Promise<Lyrics> {
-    return await this.lyrics(createLyricsDto).save()
+    const newLyrics = new this.lyrics(createLyricsDto)
+    return await newLyrics.save()
   }
 
   async updateLyrics(lyricsID: string, createLyricsDto: CreateLyricsDto): Promise<Lyrics> {
@@ -28,7 +29,8 @@ export class LyricsService {
     return await this.lyrics.findByIdAndRemove(lyricsID)
   }
 
-  async getLyricsByText(lyricsText: string): Promise<Lyrics> {
+  async getLyricsByText(lyricsText: string): Promise<Lyrics[]> {
     return await this.lyrics.find({ lyrics: { $regex: lyricsText, $options: 'i' }})
   }
+
 }
